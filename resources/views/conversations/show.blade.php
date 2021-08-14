@@ -12,10 +12,10 @@
                     @livewire('conversations.conversation-users', ['users' => $conversation->users])
                 </div>
                 <div class="p-4" style="height: 300px; max-height: 300px; overflow: scroll">
-                    @livewire('conversations.conversation-messages')
+                    @livewire('conversations.conversation-messages', ['messages' => $conversation->messages])
                 </div>
-                <div class="p-4 border-top">
-                    @livewire('conversations.conversation-reply')
+                <div class="p-2 border-top">
+                    @livewire('conversations.conversation-reply', ['conversation' => $conversation])
                 </div>
             </div>
         </div>

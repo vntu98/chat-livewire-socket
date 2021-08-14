@@ -21,6 +21,11 @@ class UserPresenter
         return $this->model->name;
     }
 
+    public function avatar()
+    {
+        return 'https://gravatar.com/avatar/' . md5($this->model->email) . '?s=80&d=mm';
+    }
+
     public function __get($property)
     {
         if (method_exists($this, $property)) {

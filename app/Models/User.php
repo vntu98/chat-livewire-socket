@@ -52,4 +52,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Conversation::class)
             ->oldest();
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
