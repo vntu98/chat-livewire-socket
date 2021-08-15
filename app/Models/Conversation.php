@@ -9,6 +9,14 @@ class Conversation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'last_message_at'
+    ];
+
+    protected $dates = [
+        'last_message_at'
+    ];
+
     public function getRouteKeyName()
     {
         return 'uuid';

@@ -9,7 +9,7 @@
                 </div>
 
                 <p class="text-muted mb-0 text-truncate d-flex align-items-center">
-                    <span>This is the last message body</span>
+                    <span>{{ optional($conversation->messages->first())->body }}</span>
                 </p>
             </a>
         @endforeach

@@ -27,6 +27,10 @@ class ConversationReply extends Component
             'body' => $this->body
         ]);
 
+        $this->conversation->update([
+            'last_message_at' => now()
+        ]);
+
         $this->emit('message.created', $message->id);
 
         $this->body = '';
