@@ -9,7 +9,7 @@
                 </div>
 
                 <p class="text-muted mb-0 text-truncate d-flex align-items-center">
-                    @if (!optional($conversation->pivot)->read_at)
+                    @if (!auth()->user()->hasRead($conversation))
                         <span class="bg-primary mr-2 rounded-circle" style="width: 10px; height: 10px"></span>
                     @endif
                     <span>{{ optional($conversation->messages->first())->body }}</span>

@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->conversations->contains('id', $id);
     }
 
+    public function hasRead(Conversation $conversation)
+    {
+        return $this->conversations->find($conversation->id)->pivot->read_at;
+    }
+
     public function present()
     {
         return new UserPresenter($this);

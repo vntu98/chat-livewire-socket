@@ -14,6 +14,11 @@ class ConversationUsers extends Component
         $this->users = $users;
     }
 
+    public function addUser($user)
+    {
+        dd($user);
+    }
+
     public function render()
     {
         return view('livewire.conversations.conversation-users');

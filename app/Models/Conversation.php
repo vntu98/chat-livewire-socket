@@ -10,7 +10,8 @@ class Conversation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'last_message_at'
+        'last_message_at',
+        'uuid'
     ];
 
     protected $dates = [
@@ -26,6 +27,7 @@ class Conversation extends Model
     {
         return $this->belongsToMany(User::class)
             ->withPivot('read_at')
+            ->withTimestamps()
             ->oldest();
     }
 
