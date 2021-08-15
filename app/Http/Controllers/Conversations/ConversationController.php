@@ -32,4 +32,11 @@ class ConversationController extends Controller
 
         return view('conversations.show', compact('conversation', 'conversations'));
     }
+
+    public function create(Request $request)
+    {
+        $conversations = $request->user()->conversations()->orderBy('last_message_at', 'desc')->get();
+
+        return view('conversations.create', compact('conversations'));
+    }
 }
