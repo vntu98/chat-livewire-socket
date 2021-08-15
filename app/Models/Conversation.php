@@ -25,7 +25,13 @@ class Conversation extends Model
     public function users()
     {
         return $this->belongsToMany(User::class)
+            ->withPivot('read_at')
             ->oldest();
+    }
+
+    public function others()
+    {
+        return $this->users()->where('user_id', '!=', auth()->id());
     }
 
     public function messages()

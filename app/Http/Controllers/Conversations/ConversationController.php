@@ -22,7 +22,13 @@ class ConversationController extends Controller
 
     public function show(Conversation $conversation, Request $request)
     {
-        $conversations = $request->user()->conversations()->orderBy('last_message_at', 'desc')->get();
+        $conversations = $request->user()->conversations();
+
+        $conversations->updateExistingPivot($conversation, [
+            'read_at' => now()
+        ]);
+
+        $conversations = $conversations->orderBy('last_message_at', 'desc')->get();
 
         return view('conversations.show', compact('conversation', 'conversations'));
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Conversations;
 
+use App\Events\Conversations\MessageAdded;
 use App\Models\Conversation;
 use Livewire\Component;
 
@@ -30,6 +31,14 @@ class ConversationReply extends Component
         $this->conversation->update([
             'last_message_at' => now()
         ]);
+
+        foreach ($this->conversation->others as $user) {
+            $user->conversations()->updateExistingPivot($this->conversation, [
+                'read_at' => null
+            ]);
+        }
+
+        broadcast(new MessageAdded($message))->toOthers();
 
         $this->emit('message.created', $message->id);
 

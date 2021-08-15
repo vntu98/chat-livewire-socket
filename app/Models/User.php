@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function inConversation($id)
+    {
+        return $this->conversations->contains('id', $id);
+    }
+
     public function present()
     {
         return new UserPresenter($this);
@@ -50,6 +55,7 @@ class User extends Authenticatable
     public function conversations()
     {
         return $this->belongsToMany(Conversation::class)
+            ->withPivot('read_at')
             ->oldest();
     }
 
