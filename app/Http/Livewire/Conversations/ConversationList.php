@@ -27,7 +27,7 @@ class ConversationList extends Component
     {
         $id = $payload['conversation']['id'];
 
-        $this->conversations = $this->conversations->find($id)->fresh();
+        $this->conversations->find($id)->fresh();
     }
 
     public function prependConversation($id)

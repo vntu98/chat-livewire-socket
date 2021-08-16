@@ -28,6 +28,10 @@
 
             addUser(user) {
                 @this.call('addUser', user)
+                this.$refs.search.value = ''
+
+                this.suggestions = []
+                this.show = false
             }
         }
     }

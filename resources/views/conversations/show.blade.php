@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <div class="bg-white">
                 <div class="p-4 border-bottom">
-                    @livewire('conversations.conversation-users', ['users' => $conversation->users])
+                    @livewire('conversations.conversation-users', ['conversation' => $conversation, 'users' => $conversation->users])
                 </div>
                 <div class="p-4" style="height: 300px; max-height: 300px; overflow: scroll">
                     @livewire('conversations.conversation-messages', ['conversation' => $conversation, 'messages' => $conversation->messages])
